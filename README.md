@@ -13,6 +13,11 @@ npm run build    # type-check + production build into dist/
 npm run lint
 ```
 
+## Game settings
+
+The questions, spelling words, answers and timings live in `src/config/gameConfig.ts`. Edit that file to change
+the game; the scenes read from it.
+
 ## Adding a scene
 
 1. Create `src/scenes/MyScene.tsx` — a component receiving `{ next, back }`.

@@ -1,11 +1,8 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
-import { QUESTIONS } from '../data/sectionQuestions'
+import { NEXT_QUESTION_DELAY_MS, SECTION_QUESTIONS } from '../config/gameConfig'
 import { BigButton } from './BigButton'
 import { SpeechBubble } from './SpeechBubble'
-
-/** How long the green "correct" button shows before moving to the next question. */
-const NEXT_QUESTION_DELAY_MS = 500
 
 /**
  * Categorisation round: items to sort, then category buttons to pick from.
@@ -16,7 +13,7 @@ export function SectionsQuiz({ next }: { next: () => void }) {
   const [wrong, setWrong] = useState<Set<string>>(new Set())
   const [solved, setSolved] = useState(false)
 
-  const question = QUESTIONS[index]
+  const question = SECTION_QUESTIONS[index]
 
   // Timing: items pop in one by one, then the category buttons. The first question waits
   // for the speech bubble to finish popping in.
@@ -27,7 +24,7 @@ export function SectionsQuiz({ next }: { next: () => void }) {
   useEffect(() => {
     if (!solved) return
     const timer = setTimeout(() => {
-      if (index + 1 < QUESTIONS.length) {
+      if (index + 1 < SECTION_QUESTIONS.length) {
         setIndex(index + 1)
         setWrong(new Set())
         setSolved(false)

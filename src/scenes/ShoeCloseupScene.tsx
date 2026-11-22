@@ -4,12 +4,10 @@ import closeupBg from '../assets/warehouse-shoe-trail-closeup.png'
 import { BigButton } from '../components/BigButton'
 import { ImageStage } from '../components/ImageStage'
 import { ProceedButton } from '../components/ProceedButton'
+import { FOOTPRINT_ANSWER } from '../config/gameConfig'
 import type { SceneProps } from './index'
 
 const IMAGE_ASPECT = 1671 / 941
-
-/** The door whose footprints match the burglar's sole. */
-const ANSWER = 3
 
 /** Horizontal centre of each trail in the picture (% of its width), so each button sits above its own trail. */
 const DOORS = [
@@ -26,7 +24,7 @@ export function ShoeCloseupScene({ next }: SceneProps) {
   const [solved, setSolved] = useState(false)
 
   const choose = (number: number) => {
-    if (number === ANSWER) setSolved(true)
+    if (number === FOOTPRINT_ANSWER) setSolved(true)
     else setWrong((prev) => new Set(prev).add(number))
   }
 
@@ -35,7 +33,7 @@ export function ShoeCloseupScene({ next }: SceneProps) {
       <ImageStage src={closeupBg} aspect={IMAGE_ASPECT}>
         {DOORS.map(({ number, left }, i) => {
           const isWrong = wrong.has(number)
-          const isRight = solved && number === ANSWER
+          const isRight = solved && number === FOOTPRINT_ANSWER
           return (
             <div key={number} className="absolute top-[10%] -translate-x-1/2" style={{ left: `${left}%` }}>
               <motion.div

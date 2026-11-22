@@ -2,20 +2,15 @@ import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { ProceedButton } from '../components/ProceedButton'
 import { Stars } from '../components/Stars'
+import { MEMORY_MISMATCH_DELAY_MS, MEMORY_OBJECTS } from '../config/gameConfig'
 import type { SceneProps } from './index'
-
-/** The 8 supermarket objects, each appearing twice in the 4x4 grid. */
-const OBJECTS = ['🛒', '🍎', '🥛', '🍞', '🧀', '🥕', '🍌', '🧃']
-
-/** How long a wrong pair stays face-up before flipping back. */
-const MISMATCH_DELAY_MS = 1000
 
 const BACK_FACE =
   'absolute inset-0 flex items-center justify-center rounded-2xl border-b-8 text-6xl shadow-xl ' +
   '[backface-visibility:hidden] [transform:rotateY(180deg)] lg:text-7xl'
 
 function shuffledDeck() {
-  const deck = [...OBJECTS, ...OBJECTS]
+  const deck = [...MEMORY_OBJECTS, ...MEMORY_OBJECTS]
   for (let i = deck.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[deck[i], deck[j]] = [deck[j], deck[i]]
@@ -33,7 +28,7 @@ export function MemoryScene({ next }: SceneProps) {
   // A wrong pair stays face-up for a moment, then flips back.
   useEffect(() => {
     if (flipped.length !== 2) return
-    const timer = setTimeout(() => setFlipped([]), MISMATCH_DELAY_MS)
+    const timer = setTimeout(() => setFlipped([]), MEMORY_MISMATCH_DELAY_MS)
     return () => clearTimeout(timer)
   }, [flipped])
 

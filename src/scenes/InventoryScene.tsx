@@ -4,26 +4,10 @@ import toyPile from '../assets/toy-pile.png'
 import { BigButton } from '../components/BigButton'
 import { ProceedButton } from '../components/ProceedButton'
 import { Stars } from '../components/Stars'
+import { INVENTORY_QUESTIONS, type InventoryQuestion } from '../config/gameConfig'
 import type { SceneProps } from './index'
 
-interface Question {
-  /** Emoji shown for each counted item */
-  emoji: string
-  a: number
-  op: '+' | '-'
-  b: number
-}
-
-/** Add the remaining questions here, in order. */
-const QUESTIONS: Question[] = [
-  { emoji: '🧸', a: 5, op: '+', b: 4 },
-  { emoji: '✈️', a: 20, op: '-', b: 6 },
-  { emoji: '🚗', a: 10, op: '+', b: 12 },
-  { emoji: '🪆', a: 6, op: '-', b: 4 },
-  { emoji: '🍭', a: 15, op: '+', b: 10 },
-]
-
-const answerOf = ({ a, op, b }: Question) => (op === '+' ? a + b : a - b)
+const answerOf = ({ a, op, b }: InventoryQuestion) => (op === '+' ? a + b : a - b)
 
 /** A big number with a single item icon beside it, e.g. "5 🧸". */
 function Group({ count, emoji }: { count: number; emoji: string }) {
@@ -37,7 +21,7 @@ function Group({ count, emoji }: { count: number; emoji: string }) {
   )
 }
 
-function Answer({ q, revealed, onReveal }: { q: Question; revealed: boolean; onReveal: () => void }) {
+function Answer({ q, revealed, onReveal }: { q: InventoryQuestion; revealed: boolean; onReveal: () => void }) {
   return (
     <div className="flex w-28 items-center justify-center">
       {revealed ? (
@@ -124,7 +108,7 @@ export function InventoryScene({ next }: SceneProps) {
 
             <div className="relative flex w-full max-w-6xl flex-col gap-9 mt-10">
               {/* Each question appears once the previous one has been revealed */}
-              {QUESTIONS.slice(0, revealed.size + 1).map((q, i) => (
+              {INVENTORY_QUESTIONS.slice(0, revealed.size + 1).map((q, i) => (
                 <motion.div
                   key={i}
                   className={`
@@ -147,7 +131,7 @@ export function InventoryScene({ next }: SceneProps) {
             </div>
 
             {/* Once every answer is revealed, the host can move on */}
-            {revealed.size === QUESTIONS.length && <ProceedButton onClick={next} />}
+            {revealed.size === INVENTORY_QUESTIONS.length && <ProceedButton onClick={next} />}
           </motion.div>
         )}
       </AnimatePresence>

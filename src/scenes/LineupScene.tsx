@@ -1,18 +1,16 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
-import hair from '../assets/evidence-hair.png'
 import lineup from '../assets/suspects-lineup.png'
-import supermarketCctv from '../assets/supermarket-cctv.png'
-import toyshopCctv from '../assets/toyshop-cctv.png'
 import { BigButton } from '../components/BigButton'
 import { ProceedButton } from '../components/ProceedButton'
-import { CluePopup, type Clue } from '../components/CluePopup'
+import { CluePopup } from '../components/CluePopup'
 import { Stars } from '../components/Stars'
+import { BURGLAR_SUSPECT, LINEUP_CLUES } from '../config/gameConfig'
 import type { SceneProps } from './index'
 
 const IMAGE_ASPECT = 1536 / 1024
-/** Suspect number 1 (index 0) is the burglar. */
-const BURGLAR = 0
+/** Grid position of the burglar (suspects are numbered from 1 in the picture and config). */
+const BURGLAR = BURGLAR_SUSPECT - 1
 const COLUMNS = 5
 const ROWS = 2
 
@@ -21,19 +19,6 @@ const ROWS = 2
  * grid and small gaps between cards. The invisible buttons use the same numbers so they line up with the cards.
  */
 const GRID = { left: 0.5, right: 0.9, top: 3.4, bottom: 3.3, columnGap: 0.5, rowGap: 1.2 }
-
-/** The clues, in the order they are revealed. */
-const CLUES: Clue[] = [
-  { label: 'CCTV // JOYLAND TOY SHOP', src: toyshopCctv, alt: 'CCTV footage from the toy shop', aspect: 1672 / 941 },
-  {
-    label: 'CCTV // SUPERMARKET',
-    src: supermarketCctv,
-    alt: 'CCTV footage from the supermarket',
-    aspect: 1670 / 941,
-    zoom: { scale: 1.3, origin: '85% 52%' }, // closer on the burglar
-  },
-  { label: 'EVIDENCE // HAIR', src: hair, alt: 'Strands of hair found on the beanie', aspect: 500 / 495 },
-]
 
 /**
  * Suspect line-up. Tap a mugshot to flip its card over (eliminating it; tap again to undo).
@@ -71,7 +56,7 @@ export function LineupScene({ next, registerAdvance }: SceneProps) {
   const showClue = () => {
     let latest = clueIndex
     if (clueIndex === -1) latest = 0
-    else if (flippedSinceClue && clueIndex < CLUES.length - 1) latest = clueIndex + 1
+    else if (flippedSinceClue && clueIndex < LINEUP_CLUES.length - 1) latest = clueIndex + 1
     setClueIndex(latest)
     setViewIndex(latest) // always open on the newest clue
     setFlippedSinceClue(false)
@@ -201,9 +186,9 @@ export function LineupScene({ next, registerAdvance }: SceneProps) {
         {open && (
           <CluePopup
             key="clue"
-            clue={CLUES[viewIndex]}
+            clue={LINEUP_CLUES[viewIndex]}
             number={viewIndex + 1}
-            total={CLUES.length}
+            total={LINEUP_CLUES.length}
             onPrev={viewIndex > 0 ? () => setViewIndex(viewIndex - 1) : undefined}
             onNext={viewIndex < clueIndex ? () => setViewIndex(viewIndex + 1) : undefined}
             onClose={() => setOpen(false)}

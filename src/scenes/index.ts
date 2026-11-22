@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react'
+import { SPELLING_WORDS } from '../config/gameConfig'
 import { CctvScene } from './CctvScene'
 import { CctvScene2 } from './CctvScene2'
 import { DoorLockScene } from './DoorLockScene'
@@ -19,13 +20,9 @@ import { ShoeCloseupScene } from './ShoeCloseupScene'
 import { ShoeDatabaseScene } from './ShoeDatabaseScene'
 import { WarehouseTrailScene } from './WarehouseTrailScene'
 import { RadioScene } from './RadioScene'
+import { makeSpellingScene } from './SpellingScene'
 import { SupermarketScene } from './SupermarketScene'
 import { BurglarRouteScene } from './BurglarRouteScene'
-import { SpellCartoonBooksScene } from './SpellCartoonBooksScene'
-import { SpellCrayonsScene } from './SpellCrayonsScene'
-import { SpellDinosaurScene } from './SpellDinosaurScene'
-import { SpellLollipopScene } from './SpellLollipopScene'
-import { SpellUnicornScene } from './SpellUnicornScene'
 
 export interface SceneProps {
   /** Go to the next scene */
@@ -51,11 +48,11 @@ export const scenes: Scene[] = [
   { id: 'night-street', Component: NightStreetScene },
   { id: 'home', Component: HomeScene },
   { id: 'inventory', Component: InventoryScene },
-  { id: 'spell-lollipop', Component: SpellLollipopScene },
-  { id: 'spell-cartoon-books', Component: SpellCartoonBooksScene },
-  { id: 'spell-dinosaur', Component: SpellDinosaurScene },
-  { id: 'spell-unicorn', Component: SpellUnicornScene },
-  { id: 'spell-crayons', Component: SpellCrayonsScene },
+  // One spelling sign per word in SPELLING_WORDS
+  ...SPELLING_WORDS.map((word) => ({
+    id: `spell-${word.toLowerCase().replace(/ /g, '-')}`,
+    Component: makeSpellingScene(word),
+  })),
   { id: 'cctv', Component: CctvScene },
   { id: 'radio', Component: RadioScene },
   { id: 'supermarket', Component: SupermarketScene },
