@@ -1,7 +1,7 @@
 import footage from '../assets/supermarket-cctv.png'
 import { CctvView } from '../components/CctvView'
 
-/** Second CCTV clue: the robber in the supermarket storage room. */
+/** Second CCTV clue: the burglar in the supermarket storage room. */
 export function CctvScene2() {
   return (
     <CctvView

@@ -1,4 +1,4 @@
-/** The supermarket sorting questions. Also used to recap the robber's route in the next scene. */
+/** The supermarket sorting questions. Also used to recap the burglar's route in the next scene. */
 export interface Question {
   items: { emoji: string; label: string }[]
   options: string[]

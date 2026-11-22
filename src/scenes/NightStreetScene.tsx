@@ -78,7 +78,7 @@ export function NightStreetScene() {
       {/* Speech bubbles, one each side of the shop, tails pointing in towards it */}
       {step >= 2 && (
         <SpeechBubble className="absolute left-[20%] top-[22%] w-max" tail="right-10" origin="right bottom">
-          Help! A robber!
+          Help! A burglar!
         </SpeechBubble>
       )}
       {step >= 3 && (

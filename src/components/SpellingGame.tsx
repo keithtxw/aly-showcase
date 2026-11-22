@@ -38,7 +38,7 @@ export function SpellingGame({ word, onProceed }: SpellingGameProps) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring' }}
       >
-        The robber broke my signs! Can you fix them?
+        The burglar broke my signs! Can you fix them?
       </motion.h2>
 
       {/* The shop sign */}

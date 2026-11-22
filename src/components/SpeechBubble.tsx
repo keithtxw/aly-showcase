@@ -1,6 +1,14 @@
 import { motion } from 'motion/react'
 import type { ReactNode } from 'react'
 
+/** Border/position classes that turn the rotated square into a pointer on each edge. */
+const TAILS = {
+  bottom: '-bottom-4 border-b-4 border-r-4',
+  left: '-left-4 border-b-4 border-l-4',
+  right: '-right-4 border-r-4 border-t-4',
+  top: '-top-4 border-l-4 border-t-4',
+}
+
 /**
  * Pops in with a bounce. Position it via `className` (e.g. `absolute ...` or `relative`).
  * `tail` is a Tailwind position string for the pointer, e.g. "left-10".
@@ -16,8 +24,11 @@ export function SpeechBubble({
   children: ReactNode
   className?: string
   tail?: string
-  /** Which edge the pointer sits on. `tail` then positions it along that edge (e.g. "top-16" for 'left' or 'right'). */
-  tailSide?: 'bottom' | 'left' | 'right'
+  /**
+   * Which edge the pointer sits on. `tail` then positions it along that edge
+   * (e.g. "top-16" for 'left' or 'right', "left-20" for 'top'). Use 'none' for no pointer.
+   */
+  tailSide?: 'bottom' | 'left' | 'right' | 'top' | 'none'
   /** CSS transform-origin for the pop-in, so it grows out of its speaker */
   origin?: string
   /** Seconds to wait before popping in */
@@ -35,15 +46,9 @@ export function SpeechBubble({
       transition={{ type: 'spring', stiffness: 260, damping: 14, delay }}
     >
       {children}
-      <span
-        className={`absolute h-7 w-7 rotate-45 border-night bg-white ${
-          tailSide === 'left'
-            ? '-left-4 border-b-4 border-l-4'
-            : tailSide === 'right'
-              ? '-right-4 border-r-4 border-t-4'
-              : '-bottom-4 border-b-4 border-r-4'
-        } ${tail}`}
-      />
+      {tailSide !== 'none' && (
+        <span className={`absolute h-7 w-7 rotate-45 border-night bg-white ${TAILS[tailSide]} ${tail}`} />
+      )}
     </motion.div>
   )
 }

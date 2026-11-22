@@ -100,7 +100,7 @@ export function InventoryScene({ next }: SceneProps) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring' }}
       >
-        Oh no! The robber messed up the toys! 🧸
+        Oh no! The burglar messed up the toys! 🧸
       </motion.h2>
       <AnimatePresence mode="wait">
         {!started ? (

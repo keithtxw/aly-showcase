@@ -8,7 +8,7 @@ import { ExclamationBurst } from '../components/ExclamationBurst'
 import { Stars } from '../components/Stars'
 import type { SceneProps } from './index'
 
-/** The robber's route, in the order the panels appear. */
+/** The burglar's route, in the order the panels appear. */
 const PANELS = [
   { src: fruit, alt: 'The fruits section', tilt: -1.5 },
   { src: seafood, alt: 'The seafood section', tilt: 1.5 },
@@ -19,10 +19,10 @@ const PANELS = [
 const PANEL_ASPECT = 831 / 466
 
 /**
- * Recap of the robber's route as a comic page. Each → press adds the next panel;
+ * Recap of the burglar's route as a comic page. Each → press adds the next panel;
  * after the last panel one more press bangs in "Slam!" in the middle; then → moves on.
  */
-export function RobberRouteScene({ registerAdvance }: SceneProps) {
+export function BurglarRouteScene({ registerAdvance }: SceneProps) {
   const [shown, setShown] = useState(0)
   const [slam, setSlam] = useState(false)
 
@@ -48,7 +48,7 @@ export function RobberRouteScene({ registerAdvance }: SceneProps) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring' }}
       >
-        Let&apos;s go through the sections to find the robber
+        Let&apos;s go through the sections to find the burglar
       </motion.h2>
 
       {/* Comic page: the four panels centred under the header */}

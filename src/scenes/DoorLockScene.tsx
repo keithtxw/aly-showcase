@@ -7,7 +7,7 @@ import type { SceneProps } from './index'
 
 const IMAGE_ASPECT = 1672 / 941
 
-/** The locked "Storage - Staff Only" door the robber went through. */
+/** The locked "Storage - Staff Only" door the burglar went through. */
 export function DoorLockScene({ next }: SceneProps) {
   return (
     <div className="relative h-full min-h-[600px] overflow-hidden bg-[#f3e6dc]">
@@ -21,7 +21,7 @@ export function DoorLockScene({ next }: SceneProps) {
             origin="right center"
             delay={0.6}
           >
-            The robber must have went in through the door, but it is locked!
+            The burglar must have went in through the door, but it is locked!
           </SpeechBubble>
 
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', delay: 1.6 }}>
