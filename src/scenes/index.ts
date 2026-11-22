@@ -7,6 +7,7 @@ import { InventoryScene } from './InventoryScene'
 import { MemoryScene } from './MemoryScene'
 import { NightStreetScene } from './NightStreetScene'
 import { StartScene } from './StartScene'
+import { ToyshopOwnerScene } from './ToyshopOwnerScene'
 import { WarehouseInsideScene } from './WarehouseInsideScene'
 import { FindExitScene } from './FindExitScene'
 import { BeanieDropScene } from './BeanieDropScene'
@@ -72,4 +73,5 @@ export const scenes: Scene[] = [
   { id: 'round-up', Component: RoundUpScene },
   { id: 'police-station', Component: PoliceStationScene },
   { id: 'lineup', Component: LineupScene },
+  { id: 'toyshop-owner', Component: ToyshopOwnerScene },
 ]
