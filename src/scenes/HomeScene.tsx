@@ -29,7 +29,7 @@ export function HomeScene({ next }: SceneProps) {
         Joyland Police Department
       </motion.h1>
       <motion.p
-        className="relative max-w-xl text-2xl text-sky sm:text-3xl"
+        className="relative max-w-3xl text-3xl font-semibold text-white sm:text-4xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
@@ -42,7 +42,7 @@ export function HomeScene({ next }: SceneProps) {
         animate={{ scale: 1 }}
         transition={{ type: 'spring', delay: 1 }}
       >
-        <BigButton onClick={next}>Begin! 🕵️</BigButton>
+        <BigButton onClick={next}>Begin</BigButton>
       </motion.div>
     </div>
   )

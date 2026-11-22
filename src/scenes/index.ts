@@ -9,7 +9,10 @@ import { NightStreetScene } from './NightStreetScene'
 import { StartScene } from './StartScene'
 import { WarehouseInsideScene } from './WarehouseInsideScene'
 import { FindExitScene } from './FindExitScene'
+import { BeanieDropScene } from './BeanieDropScene'
 import { Clue3Scene } from './Clue3Scene'
+import { LineupScene } from './LineupScene'
+import { PoliceStationScene } from './PoliceStationScene'
 import { RoundUpScene } from './RoundUpScene'
 import { ShoeCloseupScene } from './ShoeCloseupScene'
 import { ShoeDatabaseScene } from './ShoeDatabaseScene'
@@ -55,8 +58,18 @@ export const scenes: Scene[] = [
   { id: 'cctv', Component: CctvScene },
   { id: 'radio', Component: RadioScene },
   { id: 'supermarket', Component: SupermarketScene },
-  { id: 'robber-route', Component: RobberRouteScene },
+  { id: 'burglar-route', Component: BurglarRouteScene },
   { id: 'door-lock', Component: DoorLockScene },
   { id: 'memory', Component: MemoryScene },
   { id: 'cctv-2', Component: CctvScene2 },
+  { id: 'warehouse-trail', Component: WarehouseTrailScene },
+  { id: 'shoe-database', Component: ShoeDatabaseScene },
+  { id: 'shoe-closeup', Component: ShoeCloseupScene },
+  { id: 'warehouse-inside', Component: WarehouseInsideScene },
+  { id: 'find-exit', Component: FindExitScene },
+  { id: 'beanie-drop', Component: BeanieDropScene },
+  { id: 'clue-3', Component: Clue3Scene },
+  { id: 'round-up', Component: RoundUpScene },
+  { id: 'police-station', Component: PoliceStationScene },
+  { id: 'lineup', Component: LineupScene },
 ]

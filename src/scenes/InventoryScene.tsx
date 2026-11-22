@@ -109,7 +109,7 @@ export function InventoryScene({ next }: SceneProps) {
             className="relative flex w-full flex-1 flex-col items-center justify-end pb-4"
             exit={{ opacity: 0, scale: 0.9 }}
           >
-            <BigButton onClick={() => setStarted(true)}>Help! 🦸</BigButton>
+            <BigButton onClick={() => setStarted(true)}>Help the shopkeeper</BigButton>
           </motion.div>
         ) : (
           <motion.div

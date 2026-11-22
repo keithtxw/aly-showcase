@@ -14,12 +14,19 @@ const STATES = {
   wrong: 'bg-red-500 text-white border-red-800',
 }
 
+/** Colour options while a button is idle (answer states above override it). */
+const COLORS = {
+  yellow: STATES.idle,
+  blue: 'bg-blue-500 text-white border-blue-800',
+}
+
 /** Chunky, bouncy button sized for small fingers. */
 export function BigButton({
   children,
   onClick,
   size = 'lg',
   state = 'idle',
+  color = 'yellow',
   disabled = false,
   className = '',
   pulse = true,
@@ -29,17 +36,20 @@ export function BigButton({
   size?: keyof typeof SIZES
   /** Answer feedback: yellow by default, green when right, red when wrong (and shakes) */
   state?: keyof typeof STATES
+  /** Colour while idle (yellow by default) */
+  color?: keyof typeof COLORS
   disabled?: boolean
   className?: string
   /** Keep gently pulsing while idle (default). Turn off for buttons that sit still. */
   pulse?: boolean
 }) {
   const active = !disabled && state === 'idle'
+  const colors = state === 'idle' ? COLORS[color] : STATES[state]
   return (
     <motion.button
       onClick={onClick}
       disabled={disabled}
-      className={`rounded-full font-bold shadow-2xl ${SIZES[size]} ${STATES[state]} ${
+      className={`rounded-full font-bold shadow-2xl ${SIZES[size]} ${colors} ${
         disabled ? '' : 'cursor-pointer'
       } ${className}`}
       animate={state === 'wrong' ? { x: [0, -8, 8, -8, 0] } : active && pulse ? { scale: [1, 1.07, 1] } : { scale: 1 }}
