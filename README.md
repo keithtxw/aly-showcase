@@ -18,6 +18,12 @@ npm run lint
 The questions, spelling words, answers and timings live in `src/config/gameConfig.ts`. Edit that file to change
 the game; the scenes read from it.
 
+## Pictures
+
+Put PNGs in `src/assets` and import them with a `?webp` suffix, e.g. `import bg from '../assets/bg.png?webp'`. This
+serves a much smaller WebP version and keeps your original PNG untouched. All pictures are also quietly preloaded
+after the page loads (`src/lib/preload.ts`).
+
 ## Adding a scene
 
 1. Create `src/scenes/MyScene.tsx` — a component receiving `{ next, back }`.

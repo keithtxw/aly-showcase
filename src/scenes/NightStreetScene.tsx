@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
-import toyshopBg from '../assets/toyshop-bg.png'
+import toyshopBg from '../assets/toyshop-bg.png?webp'
 import { ExclamationBurst } from '../components/ExclamationBurst'
 import { SpeechBubble } from '../components/SpeechBubble'
 import { playAlarm } from '../lib/sound'

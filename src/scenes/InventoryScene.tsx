@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
-import toyPile from '../assets/toy-pile.png'
+import toyPile from '../assets/toy-pile.png?webp'
 import { BigButton } from '../components/BigButton'
 import { ProceedButton } from '../components/ProceedButton'
 import { Stars } from '../components/Stars'

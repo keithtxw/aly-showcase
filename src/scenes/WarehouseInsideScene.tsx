@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import escapeComic from '../assets/escape-comic-scene.png'
+import escapeComic from '../assets/escape-comic-scene.png?webp'
 import { ProceedButton } from '../components/ProceedButton'
 import { Stars } from '../components/Stars'
 import type { SceneProps } from './index'

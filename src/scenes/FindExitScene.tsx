@@ -1,4 +1,4 @@
-import mazeBg from '../assets/warehouse-maze-overview.png'
+import mazeBg from '../assets/warehouse-maze-overview.png?webp'
 import { ImageStage } from '../components/ImageStage'
 import { ProceedButton } from '../components/ProceedButton'
 import { SpeechBubble } from '../components/SpeechBubble'

@@ -1,5 +1,5 @@
-import shoeFront from '../assets/shoe-front.png'
-import shoeSole from '../assets/shoe-sole.png'
+import shoeFront from '../assets/shoe-front.png?webp'
+import shoeSole from '../assets/shoe-sole.png?webp'
 import { DatabasePanel } from '../components/DatabasePanel'
 import { DatabaseScreen } from '../components/DatabaseScreen'
 import { ProceedButton } from '../components/ProceedButton'

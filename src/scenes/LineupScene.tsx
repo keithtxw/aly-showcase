@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
-import lineup from '../assets/suspects-lineup.png'
+import lineup from '../assets/suspects-lineup.png?webp'
 import { BigButton } from '../components/BigButton'
 import { ProceedButton } from '../components/ProceedButton'
 import { CluePopup } from '../components/CluePopup'

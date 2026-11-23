@@ -1,5 +1,5 @@
-import beanie from '../assets/evidence-beanie.png'
-import hair from '../assets/evidence-hair.png'
+import beanie from '../assets/evidence-beanie.png?webp'
+import hair from '../assets/evidence-hair.png?webp'
 import { DatabasePanel } from '../components/DatabasePanel'
 import { DatabaseScreen } from '../components/DatabaseScreen'
 

@@ -1,4 +1,4 @@
-import warehouseBg from '../assets/warehouse-shoe-trail.png'
+import warehouseBg from '../assets/warehouse-shoe-trail.png?webp'
 import { ImageStage } from '../components/ImageStage'
 import { ProceedButton } from '../components/ProceedButton'
 import { SpeechBubble } from '../components/SpeechBubble'

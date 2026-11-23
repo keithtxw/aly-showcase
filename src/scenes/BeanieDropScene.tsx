@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import beanieDrop from '../assets/beanie-drop.png'
+import beanieDrop from '../assets/beanie-drop.png?webp'
 import { ProceedButton } from '../components/ProceedButton'
 import { Stars } from '../components/Stars'
 import type { SceneProps } from './index'

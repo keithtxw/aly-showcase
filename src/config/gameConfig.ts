@@ -3,9 +3,9 @@
  * Edit the values here to change the game; the scenes read from this file.
  * (Story text, pictures and layout live in the scene files under src/scenes.)
  */
-import hair from '../assets/evidence-hair.png'
-import supermarketCctv from '../assets/supermarket-cctv.png'
-import toyshopCctv from '../assets/toyshop-cctv.png'
+import hair from '../assets/evidence-hair.png?webp'
+import supermarketCctv from '../assets/supermarket-cctv.png?webp'
+import toyshopCctv from '../assets/toyshop-cctv.png?webp'
 import type { Clue } from '../components/CluePopup'
 
 // ---------------------------------------------------------------------------------------------------------------------

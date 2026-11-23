@@ -1,4 +1,4 @@
-import footage from '../assets/supermarket-cctv.png'
+import footage from '../assets/supermarket-cctv.png?webp'
 import { CctvView } from '../components/CctvView'
 
 /** Second CCTV clue: the burglar in the supermarket storage room. */

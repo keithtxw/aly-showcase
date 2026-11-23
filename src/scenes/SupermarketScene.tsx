@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
-import shopperBg from '../assets/worried-shopper-supermarket.png'
+import shopperBg from '../assets/worried-shopper-supermarket.png?webp'
 import { BigButton } from '../components/BigButton'
 import { ImageStage } from '../components/ImageStage'
 import { SectionsQuiz } from '../components/SectionsQuiz'

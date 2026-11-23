@@ -1,4 +1,4 @@
-import carparkBg from '../assets/warehouse-carpark.png'
+import carparkBg from '../assets/warehouse-carpark.png?webp'
 import { ImageStage } from '../components/ImageStage'
 import { SpeechBubble } from '../components/SpeechBubble'
 

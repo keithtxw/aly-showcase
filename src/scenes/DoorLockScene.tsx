@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import doorBg from '../assets/supermarket-door-lock.png'
+import doorBg from '../assets/supermarket-door-lock.png?webp'
 import { BigButton } from '../components/BigButton'
 import { ImageStage } from '../components/ImageStage'
 import { SpeechBubble } from '../components/SpeechBubble'

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { useState } from 'react'
-import closeupBg from '../assets/warehouse-shoe-trail-closeup.png'
+import closeupBg from '../assets/warehouse-shoe-trail-closeup.png?webp'
 import { BigButton } from '../components/BigButton'
 import { ImageStage } from '../components/ImageStage'
 import { ProceedButton } from '../components/ProceedButton'

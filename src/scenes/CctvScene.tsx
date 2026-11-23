@@ -1,4 +1,4 @@
-import footage from '../assets/toyshop-cctv.png'
+import footage from '../assets/toyshop-cctv.png?webp'
 import { CctvView } from '../components/CctvView'
 
 /** Clue #1 */

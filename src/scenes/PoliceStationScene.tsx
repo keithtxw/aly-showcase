@@ -1,4 +1,4 @@
-import stationBg from '../assets/joyland-police-station.png'
+import stationBg from '../assets/joyland-police-station.png?webp'
 import { ImageStage } from '../components/ImageStage'
 import { ProceedButton } from '../components/ProceedButton'
 import { SpeechBubble } from '../components/SpeechBubble'
