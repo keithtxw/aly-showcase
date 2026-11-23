@@ -1,20 +1,24 @@
 import carparkBg from '../assets/warehouse-carpark.png?webp'
 import { ImageStage } from '../components/ImageStage'
+import { ProceedButton } from '../components/ProceedButton'
 import { SpeechBubble } from '../components/SpeechBubble'
+import type { SceneProps } from './index'
 
 const IMAGE_ASPECT = 1672 / 941
 
 /** The warehouse car park is full of burglars: time to round them all up. */
-export function RoundUpScene() {
+export function RoundUpScene({ next }: SceneProps) {
   return (
     <div className="relative h-full min-h-[600px] overflow-hidden bg-[#1b1b3a]">
       <ImageStage src={carparkBg} aspect={IMAGE_ASPECT} />
 
-      {/* Top of the screen, where the picture is least busy */}
-      <div className="absolute inset-x-0 top-[5%] flex justify-center px-6">
+      {/* Top of the screen, where the picture is least busy: the bubble, then the Proceed button under it */}
+      <div className="absolute inset-x-0 top-[5%] flex flex-col items-center px-6">
         <SpeechBubble className="relative max-w-4xl" tailSide="none" origin="center top" delay={0.6}>
           What! Which one is the burglar? Let&apos;s just round them all up!
         </SpeechBubble>
+
+        <ProceedButton onClick={next} delay={1.8} />
       </div>
     </div>
   )

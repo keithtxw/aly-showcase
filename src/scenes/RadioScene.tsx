@@ -1,10 +1,12 @@
 import { motion } from 'motion/react'
+import { ProceedButton } from '../components/ProceedButton'
 import { SpeechBubble } from '../components/SpeechBubble'
 import { Stars } from '../components/Stars'
 import { WalkieTalkie } from '../components/WalkieTalkie'
+import type { SceneProps } from './index'
 
 /** Police radio message about the suspicious person. */
-export function RadioScene() {
+export function RadioScene({ next }: SceneProps) {
   return (
     <div className="relative flex min-h-full flex-col items-center justify-center gap-8 px-6 py-5">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0f1b4d] via-[#2b1055] to-[#1b1b3a]" />
@@ -39,6 +41,8 @@ export function RadioScene() {
           toys.
         </SpeechBubble>
       </div>
+
+      <ProceedButton onClick={next} delay={2.2} />
     </div>
   )
 }

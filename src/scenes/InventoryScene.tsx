@@ -84,7 +84,7 @@ export function InventoryScene({ next }: SceneProps) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring' }}
       >
-        Oh no! The burglar messed up the toys! 🧸
+        The burglar made a mess! Help count the toys that are left.
       </motion.h2>
       <AnimatePresence mode="wait">
         {!started ? (
@@ -93,7 +93,7 @@ export function InventoryScene({ next }: SceneProps) {
             className="relative flex w-full flex-1 flex-col items-center justify-end pb-12"
             exit={{ opacity: 0, scale: 0.9 }}
           >
-            <BigButton onClick={() => setStarted(true)}>Help the shopkeeper</BigButton>
+            <BigButton onClick={() => setStarted(true)}>Help</BigButton>
           </motion.div>
         ) : (
           <motion.div
@@ -102,7 +102,7 @@ export function InventoryScene({ next }: SceneProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <p className="relative text-center text-2xl text-sky lg:text-3xl">
+            <p className="relative text-center text-4xl font-semibold text-white lg:text-4xl">
               Help count what&apos;s left in the shop!
             </p>
 

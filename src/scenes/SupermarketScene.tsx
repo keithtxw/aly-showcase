@@ -36,7 +36,8 @@ export function SupermarketScene({ next }: SceneProps) {
                 origin="left center"
                 delay={0.8}
               >
-                Yes I saw a suspicious person running in and through the sections. He was carrying a sack of toys.
+                He went through the sections... but I cannot remember what were they. I can only remember what I saw in
+                there.
               </SpeechBubble>
 
               {/* Appears just after the shopper has spoken */}

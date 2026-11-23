@@ -4,6 +4,7 @@ import dairy from '../assets/dairy-section.png?webp'
 import fruit from '../assets/fruit-section.png?webp'
 import seafood from '../assets/seafood-section.png?webp'
 import vegetable from '../assets/vegetable-section.png?webp'
+import { BigButton } from '../components/BigButton'
 import { ExclamationBurst } from '../components/ExclamationBurst'
 import { Stars } from '../components/Stars'
 import type { SceneProps } from './index'
@@ -16,20 +17,34 @@ const PANELS = [
   { src: dairy, alt: 'The dairy section', tilt: -1.2 },
 ]
 
+/** How long after the last panel appears before "Slam!" bangs in. */
+const SLAM_DELAY_MS = 1000
+
 const PANEL_ASPECT = 831 / 466
 
 /**
  * Recap of the burglar's route as a comic page. Each → press adds the next panel;
- * after the last panel one more press bangs in "Slam!" in the middle; then → moves on.
+ * 1 second after the last panel "Slam!" bangs in in the middle (or the next → press brings it in early).
  */
-export function BurglarRouteScene({ registerAdvance }: SceneProps) {
-  const [shown, setShown] = useState(0)
+export function BurglarRouteScene({ next, registerAdvance }: SceneProps) {
+  const [shown, setShown] = useState<Set<number>>(new Set()) // panels revealed so far (any order)
   const [slam, setSlam] = useState(false)
+
+  const reveal = (i: number) => setShown((prev) => new Set(prev).add(i))
+
+  // "Slam!" bangs in by itself 1 second after the last panel has appeared
+  const allShown = shown.size === PANELS.length
+  useEffect(() => {
+    if (!allShown || slam) return
+    const timer = setTimeout(() => setSlam(true), SLAM_DELAY_MS)
+    return () => clearTimeout(timer)
+  }, [allShown, slam])
 
   useEffect(
     () =>
       registerAdvance(() => {
-        if (shown < PANELS.length) setShown(shown + 1)
+        const nextPanel = PANELS.findIndex((_, i) => !shown.has(i))
+        if (nextPanel !== -1) reveal(nextPanel)
         else if (!slam) setSlam(true)
         else return false
         return true
@@ -60,9 +75,26 @@ export function BurglarRouteScene({ registerAdvance }: SceneProps) {
         >
           {PANELS.map((panel, i) => (
             // Every slot is always there so the page doesn't shift; panels pop into them
-            <div key={i} style={{ aspectRatio: PANEL_ASPECT }}>
+            <div key={i} className="relative" style={{ aspectRatio: PANEL_ASPECT }}>
+              {/* Empty slot shown until its panel arrives: tap it to bring in the panel */}
+              {!shown.has(i) && (
+                <motion.button
+                  type="button"
+                  aria-label={`Show panel ${i + 1}`}
+                  onClick={() => reveal(i)}
+                  whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 500, damping: 25 } }}
+                  whileTap={{ scale: 0.97, transition: { type: 'spring', stiffness: 500, damping: 25 } }}
+                  className={`
+                    cursor-pointer
+                    absolute inset-0 flex items-center justify-center rounded-xl border-4 border-dashed
+                    border-white/30 bg-white/5 text-7xl font-bold text-white/30 lg:text-8xl
+                  `}
+                >
+                  {i + 1}
+                </motion.button>
+              )}
               <AnimatePresence>
-                {i < shown && (
+                {shown.has(i) && (
                   <motion.img
                     src={panel.src}
                     alt={panel.alt}
@@ -86,6 +118,20 @@ export function BurglarRouteScene({ registerAdvance }: SceneProps) {
           )}
         </div>
       </div>
+
+      {/* Once "Slam!" has landed, an arrow in the bottom-right corner moves on (same as pressing →) */}
+      {slam && (
+        <motion.div
+          className="absolute bottom-6 right-6"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', delay: 0.8 }}
+        >
+          <BigButton size="md" pulse={false} className="px-5! text-3xl!" onClick={next}>
+            ➡️
+          </BigButton>
+        </motion.div>
+      )}
     </div>
   )
 }
