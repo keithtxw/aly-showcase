@@ -2,8 +2,10 @@ import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import toyshopBg from '../assets/toyshop-bg.png?webp'
 import { ExclamationBurst } from '../components/ExclamationBurst'
+import { ProceedButton } from '../components/ProceedButton'
 import { SpeechBubble } from '../components/SpeechBubble'
 import { playAlarm } from '../lib/sound'
+import type { SceneProps } from './index'
 
 /** Steps: 0 quiet street · 1 "Bang! Smash!" · 2 "Help!" · 3 "Joyland Police!" */
 const BEAT_TIMES = [500, 1000, 1500] // ms after the scene appears
@@ -11,7 +13,7 @@ const ALARM_DELAY = 500 // ms after "Bang! Smash!" appears
 
 const IMAGE_ASPECT = 1754 / 897
 
-export function NightStreetScene() {
+export function NightStreetScene({ next }: SceneProps) {
   const [step, setStep] = useState(0)
 
   // Beats play automatically, 500ms apart, as soon as the scene appears.
@@ -85,6 +87,13 @@ export function NightStreetScene() {
         <SpeechBubble className="absolute right-[5%] top-[22%] w-80 lg:w-96" tail="left-10" origin="left bottom">
           Joyland Police! Please come to help me!
         </SpeechBubble>
+      )}
+
+      {/* Proceed shows up once the last bubble has appeared, as a reminder that the scene is done */}
+      {step >= 3 && (
+        <div className="absolute inset-x-0 bottom-12 flex justify-center">
+          <ProceedButton onClick={next} delay={0.5} />
+        </div>
       )}
 
       {/* Alarm flash */}

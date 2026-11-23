@@ -13,7 +13,7 @@ export function WarehouseTrailScene({ next }: SceneProps) {
       <ImageStage src={warehouseBg} aspect={IMAGE_ASPECT} />
 
       {/* Bubbles stack at the bottom left (one after the other); Proceed sits at the bottom right. */}
-      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-8 px-8 pb-8">
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-8 px-8 pb-12">
         <div className="flex max-w-3xl flex-col items-start gap-3">
           <SpeechBubble className="relative text-left" tailSide="none" origin="left bottom" delay={1.2}>
             It looks like the burglar went through one of these doors. How do we know which did he go?

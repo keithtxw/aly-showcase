@@ -61,7 +61,7 @@ export function MemoryScene({ next }: SceneProps) {
       {/* Sized so the whole square grid (plus the Proceed button below) fits on screen */}
       <div
         className="relative grid grid-cols-4 gap-6 lg:gap-6 mt-5"
-        style={{ width: 'min(100%, calc(100vh - 290px))', minWidth: '320px' }}
+        style={{ width: 'min(100%, calc(100vh - 340px))', minWidth: '320px' }}
       >
         {cards.map((emoji, i) => {
           const faceUp = flipped.includes(i) || matched.has(i)
@@ -111,7 +111,7 @@ export function MemoryScene({ next }: SceneProps) {
       </div>
 
       {/* Space is reserved so the grid doesn't jump when the button appears */}
-      <div className="relative flex h-28 items-center justify-center">
+      <div className="relative flex h-32 items-center justify-center">
         {complete && <ProceedButton onClick={next} />}
       </div>
     </div>

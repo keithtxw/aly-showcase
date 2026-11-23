@@ -24,7 +24,7 @@ export function WarehouseInsideScene({ next }: SceneProps) {
       </div>
 
       {/* Button strip */}
-      <div className="relative flex h-36 items-start justify-center">
+      <div className="relative flex h-44 items-start justify-center">
         <ProceedButton onClick={next} customLabel="Chase" delay={1} />
       </div>
     </div>

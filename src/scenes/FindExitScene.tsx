@@ -13,7 +13,7 @@ export function FindExitScene({ next }: SceneProps) {
       <ImageStage src={mazeBg} aspect={IMAGE_ASPECT} />
 
       {/* Bottom of the screen: the bubble, then the Proceed button under it */}
-      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-6 pb-6">
+      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-6 pb-12">
         <SpeechBubble className="relative max-w-5xl" tailSide="none" origin="center bottom" delay={0.6}>
           The burglar must have went through that exit! This place is an absolute maze. Can we find our way out?
         </SpeechBubble>

@@ -6,7 +6,7 @@ import { ProceedButton } from '../components/ProceedButton'
 import type { SceneProps } from './index'
 
 /** The sole is the focus, so it gets the most room the screen allows; the shoe is smaller. */
-const SOLE_HEIGHT = 'clamp(220px, calc(100vh - 370px), 560px)'
+const SOLE_HEIGHT = 'clamp(220px, calc(100vh - 410px), 560px)'
 const SHOE_HEIGHT = `calc(${SOLE_HEIGHT} * 0.6)`
 
 /** HQ's shoe database: a picture of the burglar's shoe and its sole. */

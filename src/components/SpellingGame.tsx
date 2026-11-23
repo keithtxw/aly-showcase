@@ -27,6 +27,9 @@ export function SpellingGame({ word, onProceed }: SpellingGameProps) {
 
   const guess = (letter: string) => setGuessed((prev) => new Set(prev).add(letter))
 
+  /** Host shortcut for when the kids already know the word: fill in every letter at once. */
+  const reveal = () => setGuessed((prev) => new Set([...prev, ...letters]))
+
   return (
     <div className="relative flex min-h-full flex-col items-center justify-center gap-6 px-6 py-5">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0f1b4d] via-[#2b1055] to-[#1b1b3a]" />
@@ -119,18 +122,23 @@ export function SpellingGame({ word, onProceed }: SpellingGameProps) {
         })}
       </div>
 
-      {/* Space is always reserved so the layout doesn't jump when the button appears */}
-      <div className="relative flex min-h-24 items-center">
-        {complete && (
-          <motion.div
-            className="mt-10"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: 'spring', delay: 0.5 }}
-          >
+      {/* Space is always reserved so the layout doesn't jump. Reveal until the word is complete, then Next. */}
+      <div className="relative flex min-h-32 items-center">
+        <motion.div
+          key={complete ? 'next' : 'reveal'}
+          className="mt-6"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', delay: complete ? 0.5 : 0.8 }}
+        >
+          {complete ? (
             <BigButton onClick={onProceed}>Next ➡️</BigButton>
-          </motion.div>
-        )}
+          ) : (
+            <BigButton size="md" color="blue" pulse={false} onClick={reveal}>
+              Reveal
+            </BigButton>
+          )}
+        </motion.div>
       </div>
     </div>
   )

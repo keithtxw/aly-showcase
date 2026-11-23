@@ -90,7 +90,7 @@ export function InventoryScene({ next }: SceneProps) {
         {!started ? (
           <motion.div
             key="intro"
-            className="relative flex w-full flex-1 flex-col items-center justify-end pb-4"
+            className="relative flex w-full flex-1 flex-col items-center justify-end pb-12"
             exit={{ opacity: 0, scale: 0.9 }}
           >
             <BigButton onClick={() => setStarted(true)}>Help the shopkeeper</BigButton>
@@ -98,7 +98,7 @@ export function InventoryScene({ next }: SceneProps) {
         ) : (
           <motion.div
             key="questions"
-            className="relative flex w-full flex-col items-center gap-4"
+            className="relative flex w-full flex-col items-center gap-4 pb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >

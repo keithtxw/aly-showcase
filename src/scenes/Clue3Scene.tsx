@@ -2,6 +2,7 @@ import beanie from '../assets/evidence-beanie.png?webp'
 import hair from '../assets/evidence-hair.png?webp'
 import { DatabasePanel } from '../components/DatabasePanel'
 import { DatabaseScreen } from '../components/DatabaseScreen'
+import type { SceneProps } from './index'
 
 /**
  * Both pictures share one frame size (both photos are almost exactly square). The size is the
@@ -12,9 +13,14 @@ const PHOTO_ASPECT = 1
 const PHOTO_HEIGHT = `min(calc(100vh - 300px), calc((min(100vw - 48px, 72rem) - 104px) / 2 / ${PHOTO_ASPECT}), 560px)`
 
 /** Clue #3: the dropped beanie, and the strands of hair found on it. */
-export function Clue3Scene() {
+export function Clue3Scene({ next }: SceneProps) {
   return (
-    <DatabaseScreen title="JOYLAND POLICE HQ // CLUE #3 EVIDENCE" search="DROPPED BEANIE" status="2 ITEMS FOUND">
+    <DatabaseScreen
+      title="JOYLAND POLICE HQ // CLUE #3 EVIDENCE"
+      search="DROPPED BEANIE"
+      status="2 ITEMS FOUND"
+      onProceed={next}
+    >
       <DatabasePanel
         label="BEANIE"
         tag="● EVIDENCE"

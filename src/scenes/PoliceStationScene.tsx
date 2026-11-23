@@ -13,7 +13,7 @@ export function PoliceStationScene({ next }: SceneProps) {
       <ImageStage src={stationBg} aspect={IMAGE_ASPECT} />
 
       {/* Bottom of the screen (road and pavement): the bubble, then the Proceed button under it */}
-      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-6 pb-6">
+      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-6 pb-12">
         <SpeechBubble className="relative max-w-5xl" tailSide="none" origin="center bottom" delay={0.6}>
           The suspects have been rounded. Are you ready to catch the burglar?
         </SpeechBubble>
