@@ -44,6 +44,15 @@ export function StartScene({ next }: SceneProps) {
       >
         <BigButton onClick={next}>Start</BigButton>
       </motion.div>
+
+      <motion.p
+        className="absolute inset-x-0 bottom-5 px-6 text-center text-base text-white/60 lg:text-lg"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+      >
+        This site is best viewed on desktop
+      </motion.p>
     </div>
   )
 }
