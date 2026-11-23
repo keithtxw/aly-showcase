@@ -1,7 +1,7 @@
 import { motion } from 'motion/react'
 import { useState } from 'react'
 import ownerBg from '../assets/toyshop-owner-joyful.png?webp'
-import pockyBox from '../assets/pocky-box.png?webp'
+import snack from '../assets/hello-panda-snack.png?webp'
 import { ImageStage } from '../components/ImageStage'
 import { ProceedButton } from '../components/ProceedButton'
 import { SpeechBubble } from '../components/SpeechBubble'
@@ -28,8 +28,8 @@ export function ToyshopOwnerScene() {
       {/* The gift slides up from the bottom right; the screen edge cuts off its bottom 10% */}
       {gift && (
         <motion.img
-          src={pockyBox}
-          alt="Two boxes of Pocky"
+          src={snack}
+          alt="Three packs of Hello Panda biscuits"
           className="absolute bottom-0 right-6 w-[clamp(460px,55vw,980px)] drop-shadow-2xl"
           initial={{ x: '40%', y: '120%' }}
           animate={{ x: 0, y: '10%' }} // ends 10% below the screen edge
